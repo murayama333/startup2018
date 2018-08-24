@@ -14,7 +14,7 @@
 
 秘密鍵ファイルは以下のリンクからダウンロードしてください。
 
-[cloud_demo](cloud_demo)
+[cloud_demo](https://raw.githubusercontent.com/murayama333/startup2018/master/part2/cloud_demo)
 
 > 右クリックメニューから「リンク先を別名で保存」を選択してください。ファイル名はcloud_demoとして、デスクトップなど任意のフォルダに保存します。
 
