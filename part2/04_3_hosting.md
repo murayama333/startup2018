@@ -127,7 +127,7 @@ service apache2 stop
 #### Macユーザの場合
 
 ```
-scp -i /Users/murayama/Desktop/serverkey.pem /Users/murayama/Desktop/sample.html ubuntu@52.79.97.23
+scp -i /Users/murayama/Desktop/cloud_demo /Users/murayama/Desktop/sample.html root@52.79.97.23:
 ```
 
 #### Windowsユーザの場合
