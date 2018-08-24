@@ -1,50 +1,94 @@
 # DAY3 - ソフトウェア
 
-## Digital Ocean
+## 1 クラウドサーバへの接続
 
-Digital Oceanはシンプルで使いやすいクラウドサービスです。数秒でクラウド上にLinuxサーバを準備できます。
+クラウドサーバに接続するには次の情報が必要です。
 
-https://www.digitalocean.com/
++ 接続ホスト（IPアドレス）
++ ユーザ名
++ パスワード（あるいは秘密鍵）
 
-![](digital/image2.png)
+接続ホスト（IPアドレス）については、前の章で取得済みです。また、今回はサーバ作成時にUbuntuサーバを選択したので、ユーザ名はubuntuでログインできます。
 
-> 以降の作業はアカウントが必要なため講師が担当します。
+あとはパスワードか秘密鍵が必要になります。今回は秘密鍵を使ってログインします。
+
+秘密鍵ファイルは以下のリンクからダウンロードしてください。
+
+[](cloud_demo)
+
+> 右クリックメニューから「リンク先を別名で保存」を選択してください。ファイル名はcloud_demoとして、デスクトップなど任意のフォルダに保存します。
+
+以下、サーバのIPアドレスが52.79.97.23、ユーザ名がubuntu、秘密鍵を使ってログインするという前提で説明します。
+
+> 2018/08/25（土）のみなさん、ユーザ名はrootです。
+
+### Macユーザ
+
+「ターミナル」アプリケーションを起動して、以下の2つのコマンドを入力します。
+
+鍵ファイルの権限を変更します。
+
+> フォルダ名に注意してください。
+
+```
+chmod 400 /Users/murayama/Desktop/cloud_demo
+```
+
+クラウドサーバに接続します。
+
+> フォルダ名に注意してください。
+
+```
+ssh ubuntu@52.79.97.23 -i /Users/murayama/Desktop/cloud_demo
+```
 
 ---
 
-## Linux（Ubuntu）サーバの起動
+### Windowsユーザ
 
-画面のサイドバーからDropletをクリックします。
+WindowsにはMacの「ターミナル」のような、リモートサーバに接続する標準的なアプリケーションがありません。ここではTeraTermというアプリケーションをインストールしておきましょう。
 
-![](digital/image3.png)
+以下のページにアクセスして、teraterm-4.89.zipをダウンロードします。
 
-画面中央のCreate Dropletをクリックします。
+https://osdn.jp/projects/ttssh2/releases/64118
 
-![](digital/image4.png)
+<img src="https://s3-ap-northeast-1.amazonaws.com/itcaret/itc_seminar/TT00.PNG" >
 
-Choose an imageで Ubuntuを選択します。
 
-![](digital/image5.png)
+> ダウンロードしたzipファイルは任意のフォルダに解凍しておいてください。
 
-Choose an imageで 1GBを選択します。
 
-![](digital/image6.png)
+TeraTermの起動手順は以下のとおりです。
 
-Choose an datacenter regionで Singaporeを選択します。
+1.HostにクラウドサーバのIPアドレス（52.79.97.23など）を入力して、OKボタンをクリックします。
 
-![](digital/image7.png)
+<img src="https://s3-ap-northeast-1.amazonaws.com/itcaret/itc_seminar/TT01.PNG" >
 
-Createボタンをクリックします。
+2.初回接続時は、次のような警告が表示されますが、continueボタンをクリックします。
 
-![](digital/image8.png)
+<img src="https://s3-ap-northeast-1.amazonaws.com/itcaret/itc_seminar/TT02.PNG" >
 
-以上で準備は完了です。
+3.User nameにrootを入力して、Use RSA/DSA〜を選択し、Private key file:ボタンをクリックします。
 
-> パスワード認証や秘密鍵認証についても確認しておくと良いでしょう。
+> 画像とUsername、ファイル名が違うので注意してください。
 
-### 注意
+<img src="https://s3-ap-northeast-1.amazonaws.com/itcaret/itc_seminar/TT04.PNG" >
 
-+ ここで作成したクラウドサーバは時間あたりで課金が発生します。1GBの場合は0.007$/Hです。
-+ サーバは破棄するまで課金の対象となります。
-+ セキュリティについて学びましょう。脆弱性のあるサーバを構築することは、自分が被害者になるだけでなく加害者となる可能性もあります。
-  + 本日構築したサーバは24H後に削除しておきます。
+4.表示されたダイアログで、先にダウンロードしておいた秘密鍵ファイル（cloud_dem）を選択します。ファイルの種類をall(\*\.\*)にする点に注意してください。
+
+> 画像とファイル名が違うので注意してください。
+
+<img src="https://s3-ap-northeast-1.amazonaws.com/itcaret/itc_seminar/TT03.PNG" >
+
+5.秘密鍵を選択したらOKボタンをクリックします。
+
+> 画像とUsername、ファイル名が違うので注意してください。
+
+<img src="https://s3-ap-northeast-1.amazonaws.com/itcaret/itc_seminar/TT06.PNG" >
+
+6.次のように表示されればクラウドサーバへの接続は完了です。
+
+<img src="https://s3-ap-northeast-1.amazonaws.com/itcaret/itc_seminar/TT05.PNG" >
+
+
+> 難しそうな黒い画面が表示されました。この画面の中での操作は、すべてクラウドサーバ上で実行されます。

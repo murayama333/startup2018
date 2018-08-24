@@ -1,94 +1,158 @@
 # DAY3 - ソフトウェア
 
-## 1 クラウドサーバへの接続
+クラウドサーバに接続できたので、コマンドをいくつか実行してみましょう。
 
-クラウドサーバに接続するには次の情報が必要です。
+## 1 よく使うLinuxコマンド
 
-+ 接続ホスト（IPアドレス）
-+ ユーザ名
-+ パスワード（あるいは秘密鍵）
-
-接続ホスト（IPアドレス）については、前の章で取得済みです。また、今回はサーバ作成時にUbuntuサーバを選択したので、ユーザ名はubuntuでログインできます。
-
-あとはパスワードか秘密鍵が必要になります。今回は秘密鍵を使ってログインします。
-
-秘密鍵ファイルは以下のリンクからダウンロードしてください。
-
-[](cloud_demo)
-
-> 右クリックメニューから「リンク先を別名で保存」を選択してください。ファイル名はcloud_demoとして、デスクトップなど任意のフォルダに保存します。
-
-以下、サーバのIPアドレスが52.79.97.23、ユーザ名がubuntu、秘密鍵を使ってログインするという前提で説明します。
-
-> 2018/08/25（土）のみなさん、ユーザ名はrootです。
-
-### Macユーザ
-
-「ターミナル」アプリケーションを起動して、以下の2つのコマンドを入力します。
-
-鍵ファイルの権限を変更します。
-
-> フォルダ名に注意してください。
+### pwd カレントフォルダの表示
 
 ```
-chmod 400 /Users/murayama/Desktop/cloud_demo
+pwd
 ```
 
-クラウドサーバに接続します。
+カレントフォルダとは、現在、開いているフォルダのことです。Linuxは以下のようなフォルダ構成になっています。最上位のフォルダは / となります。
 
-> フォルダ名に注意してください。
++ /
+  + root/
+  + var/
+  + etc/
+  + home/
+  + ...
+
+### mkdir フォルダの作成
 
 ```
-ssh ubuntu@52.79.97.23 -i /Users/murayama/Desktop/cloud_demo
+mkdir sample
 ```
 
----
+カレントフォルダにsampleフォルダが作成されます。
 
-### Windowsユーザ
+### cd カレントフォルダの移動
 
-WindowsにはMacの「ターミナル」のような、リモートサーバに接続する標準的なアプリケーションがありません。ここではTeraTermというアプリケーションをインストールしておきましょう。
+```
+cd /root/sample
+```
 
-以下のページにアクセスして、teraterm-4.89.zipをダウンロードします。
-
-https://osdn.jp/projects/ttssh2/releases/64118
-
-<img src="https://s3-ap-northeast-1.amazonaws.com/itcaret/itc_seminar/TT00.PNG" >
+/root/sample フォルダをオープンします。
 
 
-> ダウンロードしたzipファイルは任意のフォルダに解凍しておいてください。
+### ls カレントフォルダの閲覧
+
+```
+ls
+```
+
+この時点では /root/sampleフォルダに何もありません。
+
+### echo メッセージの表示
+
+```
+echo Hello World
+```
+
+画面にHello Worldが表示されます。
+
+次のように入力するとメッセージをファイルに保存できます。
+
+```
+echo Hello World > hello.txt
+```
+
+> lsコマンドで確認してみましょう。
 
 
-TeraTermの起動手順は以下のとおりです。
+### cat ファイルの表示
 
-1.HostにクラウドサーバのIPアドレス（52.79.97.23など）を入力して、OKボタンをクリックします。
+```
+cat hello.txt
+```
 
-<img src="https://s3-ap-northeast-1.amazonaws.com/itcaret/itc_seminar/TT01.PNG" >
-
-2.初回接続時は、次のような警告が表示されますが、continueボタンをクリックします。
-
-<img src="https://s3-ap-northeast-1.amazonaws.com/itcaret/itc_seminar/TT02.PNG" >
-
-3.User nameにrootを入力して、Use RSA/DSA〜を選択し、Private key file:ボタンをクリックします。
-
-> 画像とUsername、ファイル名が違うので注意してください。
-
-<img src="https://s3-ap-northeast-1.amazonaws.com/itcaret/itc_seminar/TT04.PNG" >
-
-4.表示されたダイアログで、先にダウンロードしておいた秘密鍵ファイル（cloud_dem）を選択します。ファイルの種類をall(\*\.\*)にする点に注意してください。
-
-> 画像とファイル名が違うので注意してください。
-
-<img src="https://s3-ap-northeast-1.amazonaws.com/itcaret/itc_seminar/TT03.PNG" >
-
-5.秘密鍵を選択したらOKボタンをクリックします。
-
-> 画像とUsername、ファイル名が違うので注意してください。
-
-<img src="https://s3-ap-northeast-1.amazonaws.com/itcaret/itc_seminar/TT06.PNG" >
-
-6.次のように表示されればクラウドサーバへの接続は完了です。
-
-<img src="https://s3-ap-northeast-1.amazonaws.com/itcaret/itc_seminar/TT05.PNG" >
+画面にHello Worldが表示されます。
 
 
-> 難しそうな黒い画面が表示されました。この画面の中での操作は、すべてクラウドサーバ上で実行されます。
+> Linuxにはviエディタというソフトが標準でインストールされています。viエディタはviコマンドで起動できます。（参考） http://net-newbie.com/linux/commands/vi.html
+
+
+## 2 Webサーバのインストール
+
+続いてWebページを公開するために、Webサーバをインストールします。Webサーバ製品もいくつかありますが、ここでは世界中で最もよく利用されているApacheを利用します。
+
+### クラウドサーバを最新化
+
+クラウド上に作成してすぐのサーバは最新の状態になっていないので、以下のコマンドを使ってサーバの利用するソフトウェアを最新にしておきます。
+
+```
+apt update -y
+```
+
+
+### Webサーバ（Apache）のインストール
+
+サーバ上にApacheをインストールします。Apacheは世界で最も使われているWebサーバープロダクトです。
+
+```
+apt install apache2
+```
+
+サーバのインストールが完了したらブラウザからアクセスしてみましょう。
+
+Chromeなどブラウザ上で以下のURLを入力します。
+
+```
+http://52.79.97.23/
+```
+
+#### （参考）Apacheの起動と停止
+
+Apacheは以下のコマンドで起動できます。
+
+```
+service apache2 start
+```
+
+停止するときは以下のようにコマンドを実行します。
+
+```
+service apache2 stop
+```
+
+### 3 HTMLファイルのアップロード
+
+手元のパソコンから、クラウド上にあるサーバにHTMLファイルをアップロードします。
+
+#### Macユーザの場合
+
+```
+scp -i /Users/murayama/Desktop/serverkey.pem /Users/murayama/Desktop/sample.html ubuntu@52.79.97.23
+```
+
+#### Windowsユーザの場合
+
+起動中のTeraTermにアップロードしたいファイルをドラッグアンドドロップします。
+
+
+### 4 Apacheの公開フォルダにHTMLファイルをコピー
+
+Apacheはデフォルトで /var/www/htmlフォルダ上のファイルを公開します。
+
+ここでは以下のようにHTMLファイル（index.html）を /var/www/htmlフォルダにコピーします。
+
+```
+cp -rf /root/index.html /var/www/html
+```
+
+> その他のCSSファイルや画像ファイルも同様に、/var/www/htmlフォルダにコピーします。
+
+以上でLinuxサーバのセットアップは完了です。
+
+### 5 動作確認
+
+ブラウザを開いて、以下のURLにアクセスしてみましょう。
+
+```
+http://52.79.97.23/index.html
+```
+
+作成したHTMLファイルを閲覧できればプログラミングは終了です。
+
+> 手元のスマートフォンからHTMLファイルを見ることもできますよ。
