@@ -63,29 +63,29 @@ TeraTermの起動手順は以下のとおりです。
 
 1.HostにクラウドサーバのIPアドレス（52.79.97.23など）を入力して、OKボタンをクリックします。
 
-<img src="https://s3-ap-northeast-1.amazonaws.com/itcaret/itc_seminar/TT01.PNG" >
+<img src="https://s3-ap-northeast-1.amazonaws.com/itcaret/itc_seminar/TT01.PNG"  width="600px">
 
 2.初回接続時は、次のような警告が表示されますが、continueボタンをクリックします。
 
-<img src="https://s3-ap-northeast-1.amazonaws.com/itcaret/itc_seminar/TT02.PNG" >
+<img src="https://s3-ap-northeast-1.amazonaws.com/itcaret/itc_seminar/TT02.PNG" width="300px">
 
 3.User nameにrootを入力して、Use RSA/DSA〜を選択し、Private key file:ボタンをクリックします。
 
-<img src="digital/02.png" >
+<img src="digital/02.png" width="400px">
 
 4.表示されたダイアログで、先にダウンロードしておいた秘密鍵ファイル（cloud_dem）を選択します。ファイルの種類をall(\*\.\*)にする点に注意してください。
 
-<img src="digital/01.png" >
+<img src="digital/01.png?a" width="500px">
 
 5.秘密鍵を選択したらOKボタンをクリックします。
 
 > 画像とUsername、ファイル名が違うので注意してください。
 
-<img src="digital/03.png" >
+<img src="digital/03.png" width="400px">
 
 6.次のように表示されればクラウドサーバへの接続は完了です。
 
-<img src="https://s3-ap-northeast-1.amazonaws.com/itcaret/itc_seminar/TT05.PNG" >
+<img src="https://s3-ap-northeast-1.amazonaws.com/itcaret/itc_seminar/TT05.PNG" width="600px">
 
 
 > 難しそうな黒い画面が表示されました。この画面の中での操作は、すべてクラウドサーバ上で実行されます。
