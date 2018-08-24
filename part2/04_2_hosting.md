@@ -8,7 +8,7 @@
 + ユーザ名
 + パスワード（あるいは秘密鍵）
 
-接続ホスト（IPアドレス）については、前の章で取得済みです。また、今回はサーバ作成時にUbuntuサーバを選択したので、ユーザ名はubuntuでログインできます。
+接続ホスト（IPアドレス）については、前の章で取得済みです。また、ユーザ名はrootでログインできます。
 
 あとはパスワードか秘密鍵が必要になります。今回は秘密鍵を使ってログインします。
 
@@ -18,9 +18,8 @@
 
 > 右クリックメニューから「リンク先を別名で保存」を選択してください。ファイル名はcloud_demoとして、デスクトップなど任意のフォルダに保存します。
 
-以下、サーバのIPアドレスが52.79.97.23、ユーザ名がubuntu、秘密鍵を使ってログインするという前提で説明します。
+以下、サーバのIPアドレスが52.79.97.23、ユーザ名がroot、秘密鍵を使ってログインするという前提で説明します。
 
-> 2018/08/25（土）のみなさん、ユーザ名はrootです。
 
 ---
 
@@ -41,7 +40,7 @@ chmod 400 /Users/murayama/Desktop/cloud_demo
 > フォルダ名に注意してください。
 
 ```
-ssh ubuntu@52.79.97.23 -i /Users/murayama/Desktop/cloud_demo
+ssh root@52.79.97.23 -i /Users/murayama/Desktop/cloud_demo
 ```
 
 ---
@@ -72,21 +71,17 @@ TeraTermの起動手順は以下のとおりです。
 
 3.User nameにrootを入力して、Use RSA/DSA〜を選択し、Private key file:ボタンをクリックします。
 
-> 画像とUsername、ファイル名が違うので注意してください。
-
-<img src="https://s3-ap-northeast-1.amazonaws.com/itcaret/itc_seminar/TT04.PNG" >
+<img src="digital/02.png" >
 
 4.表示されたダイアログで、先にダウンロードしておいた秘密鍵ファイル（cloud_dem）を選択します。ファイルの種類をall(\*\.\*)にする点に注意してください。
 
-> 画像とファイル名が違うので注意してください。
-
-<img src="https://s3-ap-northeast-1.amazonaws.com/itcaret/itc_seminar/TT03.PNG" >
+<img src="digital/01.png" >
 
 5.秘密鍵を選択したらOKボタンをクリックします。
 
 > 画像とUsername、ファイル名が違うので注意してください。
 
-<img src="https://s3-ap-northeast-1.amazonaws.com/itcaret/itc_seminar/TT06.PNG" >
+<img src="digital/03.png" >
 
 6.次のように表示されればクラウドサーバへの接続は完了です。
 
