@@ -454,3 +454,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </body>
 </html>
 ```
+
+またindex.htmlの送信フォームを以下のとおり修正します。
+
+
+```html
+<div class="green lighten-5">
+  <div class="container section">
+    <div class="row">
+      <div class="col s12 m6 l6 center">
+        <div class="section">
+          <img src="images/entry.png" class="responsive-img" />
+        </div>
+      </div>
+      <div class="col s12 m6 l6 center">
+        <p class="left-align">
+          メールアドレスを登録して頂くと最新の情報をお届けします。
+        </p>
+        <form action="save.php" method="post">
+          <input placeholder="your_mail@example.com" type="text" name="email">
+          <input type="submit" value="登録する" class="btn" >
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+> formタグの送信先がsave.phpとなっています。またボタンをsubmitボタンに修正しています。
